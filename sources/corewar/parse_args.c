@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 12:16:08 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/04 12:51:21 by aeddi            ###   ########.fr       */
+/*   Updated: 2015/09/04 15:55:56 by aeddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static t_param	set_default_params(char *ex_path)
 
 	count = 0;
 	params.ex_path = ex_path;
-	params.verb_lvl = 0;
-	params.exit_dump = 0;
+	params.exit_dump = -1;
 	params.loop_dump = 0;
+	params.verb_lvl = 0;
 	params.graphic = FALSE;
 	while (count < 4)
 	{
@@ -32,20 +32,6 @@ static t_param	set_default_params(char *ex_path)
 		count++;
 	}
 	return params;
-}
-
-static void		parse_champs(t_param *params, int ac, char **av)
-{
-	(void)params;
-	(void)ac;
-	(void)av;
-}
-
-static void		parse_misc_options(t_param *params, int ac, char **av)
-{
-	(void)params;
-	(void)ac;
-	(void)av;
 }
 
 static void		check_params(t_param *params, int ac, char **av)
