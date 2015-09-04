@@ -6,53 +6,69 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/14 16:00:35 by aeddi             #+#    #+#              #
-#    Updated: 2015/09/04 10:34:08 by aeddi            ###   ########.fr        #
+#    Updated: 2015/09/04 10:57:01 by aeddi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	
+NAME			=	corewar
+NAME2			=	asm
+
 CC				=	cc
 GDB				?=	0
 ifeq ($(GDB), 1)
-	CFLAGS		=	-Wall -Wextra -Werror -pedantic -g3 	\
-					-I $(LIBFT_INCS_DIR) -I $(INCS_DIR)
+	CFLAGS		=	-Wall -Wextra -Werror -pedantic -g3 -I $(LIBFT_INCS_DIR) -I $(INCS_DIR)
 else
-	CFLAGS		=	-Wall -Wextra -Werror -pedantic -O3 	\
-					-I $(LIBFT_INCS_DIR) -I $(INCS_DIR)
+	CFLAGS		=	-Wall -Wextra -Werror -pedantic -O3 -I $(LIBFT_INCS_DIR) -I $(INCS_DIR)
 endif
 LFLAGS			=	-L $(LIBFT_DIR) -lft
-LIBFT_DIR		=	./libft
-LIBFT_INCS_DIR	=	./libft/includes
+
 INCS_DIR		=	./includes
-OBJS_DIR		=	./objects
+LIBFT_DIR		=	./libft
+LIBFT_INCS_DIR	=	$(LIBFT_DIR)/includes
+
 SRCS_DIR		=	./sources
-OBJS			=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SRCS))
-SRCS			=	
+OBJS_DIR		=	./objects
 
-all				:	$(NAME)
+SRCS_CW_DIR		=	$(SRCS_DIR)/corewar
+SRCS_CW			=	main.c
 
-$(NAME)			:	$(OBJS_DIR) $(OBJS)
-	@$(CC) -o $(NAME) $(OBJS) $(LFLAGS)
-	@echo "]   \033[1;32mDone\033[0;0m"
+OBJS_CW_DIR		=	$(OBJS_DIR)/corewar
+OBJS_CW			=	$(patsubst %.c, $(OBJS_CW_DIR)/%.o, $(SRCS_CW))
 
-$(OBJS_DIR)/%.o	:	$(addprefix $(SRCS_DIR)/, %.c)
-	@$(CC) $(CFLAGS) -o $@ -c $^
-	@echo ".\c"
+SRCS_AS_DIR		=	$(SRCS_DIR)/asm
+SRCS_AS			=	main.c
+
+OBJS_AS_DIR		=	$(OBJS_DIR)/asm
+OBJS_AS			=	$(patsubst %.c, $(OBJS_AS_DIR)/%.o, $(SRCS_AS))
+
+
+all				:	$(NAME) $(NAME2)
+
+$(NAME)			:	$(OBJS_DIR) $(OBJS_CW)
+	$(CC) -o $(NAME) $(OBJS_CW) $(LFLAGS)
+
+$(NAME2)		:	$(OBJS_DIR) $(OBJS_AS)
+	$(CC) -o $(NAME2) $(OBJS_AS) $(LFLAGS)
+
+$(OBJS_CW_DIR)/%.o	:	$(addprefix $(SRCS_CW_DIR)/, %.c)
+	$(CC) $(CFLAGS) -o $@ -c $^
+
+$(OBJS_AS_DIR)/%.o	:	$(addprefix $(SRCS_AS_DIR)/, %.c)
+	$(CC) $(CFLAGS) -o $@ -c $^
 
 $(OBJS_DIR)		:	make_libft
-	@mkdir -p $(OBJS_DIR)
-	@echo "\033[1;32mCompiling $(NAME)   \033[0;0m[\c"
+	mkdir -p $(OBJS_DIR)
+	mkdir -p $(OBJS_CW_DIR)
+	mkdir -p $(OBJS_AS_DIR)
 
 make_libft		:
-	@$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR)
 
 fclean			:	clean
-	@rm -f $(NAME)
-	@echo "\033[1;31m$(NAME) deleted\033[0;0m"
+	rm -f $(NAME) $(NAME2)
 
 clean			:
-	@rm -rf $(OBJS_DIR)
-	@echo "\033[1;31mObjects deleted\033[0;0m"
+	rm -rf $(OBJS_DIR)
 
 re				:	fclean all
 

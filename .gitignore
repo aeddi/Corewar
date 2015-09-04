@@ -3,6 +3,8 @@
 *.o
 *.a
 a.out
+asm
+corewar
 
 # Misc #
 ########
