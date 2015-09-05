@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 10:52:24 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/04 15:56:57 by aeddi            ###   ########.fr       */
+/*   Updated: 2015/09/05 20:19:29 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,19 @@ int main(int ac, char **av)
 
 /********* To delete *********/
 	unsigned int	count = 0;
+
 	printf("Path of exec: %s\n", params.ex_path);
 	printf("Exit after: %d\n", params.exit_dump);
 	printf("Dump every: %d\n", params.loop_dump);
 	printf("Verbosity lvl: %d\n", params.verb_lvl);
 	printf("Graphic enable: %d\n", params.graphic);
+	printf("Hidden mem: %d\n", params.hidden_mem);
+	printf("Display aff: %d\n", params.disp_aff);
 	while (count < 4)
 	{
-		if (params.champs[count].name)
+		if (params.champs[count].path)
 		{
-			printf("Champ path: %s\n", params.champs[count].path);
+			printf("\nChamp path: %s\n", params.champs[count].path);
 			printf("Champ number: %d\n", params.champs[count].number);
 		}
 		count++;

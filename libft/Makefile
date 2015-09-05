@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/22 12:06:57 by aeddi             #+#    #+#              #
-#    Updated: 2014/05/19 23:06:34 by aeddi            ###   ########.fr        #
+#    Updated: 2015/09/04 20:51:48 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,23 +44,23 @@ all				:	$(NAME)
 
 $(NAME)			:	$(OBJS_DIR) $(OBJS)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-	@echo "]   \033[1;32mDone\033[0;0m"
+	@printf "]   \033[1;32mDone\033[0;0m\n"
 
 $(OBJS_DIR)/%.o	:	$(addprefix $(SRCS_DIR)/, %.c)
 	@$(CC) $(CFLAGS) -o $@ -c $^
-	@echo ".\c"
+	@printf "."
 
 $(OBJS_DIR)		:
 	@mkdir -p $(OBJS_DIR)
-	@echo "\033[1;32mCompiling libft   \033[0;0m[\c"
+	@printf "\033[1;32mCompiling libft   \033[0;0m["
 
 fclean			:	clean
 	@rm -f $(NAME)
-	@echo "\033[1;31mCompiled libft deleted\033[0;0m"
+	@printf "\033[1;31mCompiled libft deleted\033[0;0m\n"
 
 clean			:
 	@rm -rf $(OBJS_DIR)
-	@echo "\033[1;31mObjects deleted\033[0;0m"
+	@printf "\033[1;31mObjects deleted\033[0;0m\n"
 
 re				:	fclean all
 

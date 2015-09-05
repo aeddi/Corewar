@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/14 16:00:35 by aeddi             #+#    #+#              #
-#    Updated: 2015/09/04 12:46:19 by aeddi            ###   ########.fr        #
+#    Updated: 2015/09/05 19:14:01 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,14 +27,15 @@ LIBFT_DIR		=	./libft
 LIBFT_INCS_DIR	=	$(LIBFT_DIR)/includes
 
 SRCS_DIR		=	./sources
-SRCS			=	exit_error.c
-
 OBJS_DIR		=	./objects
-OBJS			=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SRCS))
 
 SRCS_CW_DIR		=	$(SRCS_DIR)/corewar
-SRCS_CW			=	main.c			\
-					parse_args.c
+SRCS_CW			=	main.c						\
+					exit_error.c				\
+					parse_args.c				\
+					parse_champs_options.c		\
+					parse_graphic_options.c		\
+					parse_misc_options.c
 
 OBJS_CW_DIR		=	$(OBJS_DIR)/corewar
 OBJS_CW			=	$(patsubst %.c, $(OBJS_CW_DIR)/%.o, $(SRCS_CW))
@@ -48,14 +49,11 @@ OBJS_AS			=	$(patsubst %.c, $(OBJS_AS_DIR)/%.o, $(SRCS_AS))
 
 all				:	$(NAME) $(NAME2)
 
-$(NAME)			:	$(OBJS_DIR) $(OBJS) $(OBJS_CW)
-	$(CC) -o $(NAME) $(OBJS) $(OBJS_CW) $(LFLAGS)
+$(NAME)			:	$(OBJS_DIR) $(OBJS_CW)
+	$(CC) -o $(NAME) $(OBJS_CW) $(LFLAGS)
 
-$(NAME2)		:	$(OBJS_DIR) $(OBJS) $(OBJS_AS)
-	$(CC) -o $(NAME2) $(OBJS) $(OBJS_AS) $(LFLAGS)
-
-$(OBJS_DIR)/%.o	:	$(addprefix $(SRCS_DIR)/, %.c)
-	$(CC) $(CFLAGS) -o $@ -c $^
+$(NAME2)		:	$(OBJS_DIR) $(OBJS_AS)
+	$(CC) -o $(NAME2) $(OBJS_AS) $(LFLAGS)
 
 $(OBJS_CW_DIR)/%.o	:	$(addprefix $(SRCS_CW_DIR)/, %.c)
 	$(CC) $(CFLAGS) -o $@ -c $^

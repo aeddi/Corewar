@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2013/11/06 14:44:35 by zaz              ###   ########.fr       */
+/*   Updated: 2015/09/05 15:01:21 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,4 @@ t_op    op_tab[17] =
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
 	{0, 0, {0}, 0, 0, 0, 0, 0}
 };
+// {mnemonique, nombre_param, {combinaison_param REGISTRE | DIRECT | INDIRECT}, opcode_decimal, coute_n_cycle, nom_operation, octet_de_codage, idx}
