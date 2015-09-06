@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/05 22:25:26 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/06 10:49:04 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/06 19:44:36 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # define PROG_NAME_LENGTH		128
 # define COMMENT_LENGTH			2048
 # define COREWAR_EXEC_MAGIC		0xea83f3
+
+# define TEXT_PRINT_WIDTH		32
 
 			# define IND_SIZE				2
 			# define DIR_SIZE				REG_SIZE

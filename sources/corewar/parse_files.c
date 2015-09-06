@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/06 12:01:43 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/06 15:37:31 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/06 18:23:25 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	parse_code(t_champ *champion, int fd)
 	end = lseek(fd, 0, SEEK_END);
 	if (ret != champion->header.prog_size || current != end)
 		exit_error(champion->path, "code size mismatch with prog_size", NULL);
+	if (champion->header.prog_size > CHAMP_MAX_SIZE)
+		exit_error(champion->path, "bigger size than CHAMP_MAX_SIZE", NULL);
 }
 
 void		parse_files(t_param *params)

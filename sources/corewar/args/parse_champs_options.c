@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 15:35:01 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/06 11:53:18 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/06 19:34:09 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	set_champ(t_param *params, int index, char *path, int number)
 		number = get_champ_number(params, index);
 	params->champs[index].path = path;
 	params->champs[index].number = number;
+	params->champs[index].color = index + 1;
 }
 
 static int	parse_champs_with_flag(t_param *params, int ac, char **av)

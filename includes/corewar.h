@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:02:50 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/06 14:04:24 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/06 19:50:18 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	parse_graphic_options(t_param *params, int ac, char **av);
 void	parse_champs_options(t_param *params, int ac, char **av);
 
 void	parse_files(t_param *params);
+
+void	launch_virtual_machine(t_param *params);
+
+void	print_memory(t_byte *memory);
 
 void	exit_error(char *error, char *detail, char *ex_path);
 

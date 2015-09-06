@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:03:07 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/06 11:49:55 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/06 19:34:46 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,18 @@ typedef enum		e_bool
 	TRUE = 1
 }					t_bool;
 
+typedef struct		s_byte
+{
+	int				color;
+	char			content;
+}					t_byte;
+
 typedef struct		s_header
 {
-  unsigned int		magic;
-  char				prog_name[PROG_NAME_LENGTH + 1];
-  unsigned int		prog_size;
-  char				comment[COMMENT_LENGTH + 1];
+	unsigned int	magic;
+	char			prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int	prog_size;
+	char			comment[COMMENT_LENGTH + 1];
 }					t_header;
 
 typedef struct		s_champ
@@ -35,6 +41,7 @@ typedef struct		s_champ
 	int				number;
 	t_header		header;
 	char			*code;
+	int				color;
 }					t_champ;
 
 typedef struct		s_process
