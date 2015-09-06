@@ -6,14 +6,14 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/14 16:00:35 by aeddi             #+#    #+#              #
-#    Updated: 2015/09/05 19:14:01 by plastic          ###   ########.fr        #
+#    Updated: 2015/09/06 14:04:54 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	corewar
 NAME2			=	asm
 
-CC				=	cc
+CC				=	clang
 GDB				?=	0
 ifeq ($(GDB), 1)
 	CFLAGS		=	-Wall -Wextra -Werror -pedantic -g3 -I $(LIBFT_INCS_DIR) -I $(INCS_DIR)
@@ -30,12 +30,13 @@ SRCS_DIR		=	./sources
 OBJS_DIR		=	./objects
 
 SRCS_CW_DIR		=	$(SRCS_DIR)/corewar
-SRCS_CW			=	main.c						\
-					exit_error.c				\
-					parse_args.c				\
-					parse_champs_options.c		\
-					parse_graphic_options.c		\
-					parse_misc_options.c
+SRCS_CW			=	main.c							\
+					exit_error.c					\
+					args/parse_args.c				\
+					args/parse_champs_options.c		\
+					args/parse_graphic_options.c	\
+					args/parse_misc_options.c		\
+					parse_files.c
 
 OBJS_CW_DIR		=	$(OBJS_DIR)/corewar
 OBJS_CW			=	$(patsubst %.c, $(OBJS_CW_DIR)/%.o, $(SRCS_CW))
@@ -62,9 +63,10 @@ $(OBJS_AS_DIR)/%.o	:	$(addprefix $(SRCS_AS_DIR)/, %.c)
 	$(CC) $(CFLAGS) -o $@ -c $^
 
 $(OBJS_DIR)		:	make_libft
-	mkdir -p $(OBJS_DIR)
-	mkdir -p $(OBJS_CW_DIR)
-	mkdir -p $(OBJS_AS_DIR)
+	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_CW_DIR)
+	@mkdir -p $(OBJS_CW_DIR)/args
+	@mkdir -p $(OBJS_AS_DIR)
 
 make_libft		:
 	$(MAKE) -C $(LIBFT_DIR)

@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 15:35:01 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/05 20:44:04 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/06 11:53:18 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	parse_champs_with_flag(t_param *params, int ac, char **av)
 
 	count = 0;
 	index = 0;
-	while (count++ < ac && index < 4)
+	while (count++ < ac && index < MAX_PLAYERS)
 	{
 		if (av[count] && !ft_strcmp(av[count], "-n") && count + 2 < ac
 			&& av[count + 1] && av[count + 2])
@@ -108,4 +108,5 @@ void		parse_champs_options(t_param *params, int ac, char **av)
 					params->ex_path);
 	if (index > 1)
 		find_champ_number_dup(params, index);
+	params->champs_amount = index;
 }

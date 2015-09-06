@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 10:52:24 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/05 20:19:29 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/06 12:01:14 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int main(int ac, char **av)
 {
 	t_param	params;
 
-	params = parse_args(ac, av);
+	parse_args(&params, ac, av);
+	parse_files(&params);
 
 /********* To delete *********/
 	unsigned int	count = 0;

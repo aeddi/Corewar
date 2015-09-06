@@ -6,12 +6,14 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:03:07 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/05 20:18:20 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/06 11:49:55 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_STRUCT_H
 # define COREWAR_STRUCT_H
+
+# include <values.h>
 
 typedef enum		e_bool
 {
@@ -19,12 +21,28 @@ typedef enum		e_bool
 	TRUE = 1
 }					t_bool;
 
+typedef struct		s_header
+{
+  unsigned int		magic;
+  char				prog_name[PROG_NAME_LENGTH + 1];
+  unsigned int		prog_size;
+  char				comment[COMMENT_LENGTH + 1];
+}					t_header;
+
 typedef struct		s_champ
 {
 	char			*path;
-	char			*name;
 	int				number;
+	t_header		header;
+	char			*code;
 }					t_champ;
+
+typedef struct		s_process
+{
+	char			*prog_count;
+	char			reg[REG_NUMBER][REG_SIZE];
+	t_bool			carry;
+}					t_process;
 
 typedef struct		s_param
 {
@@ -35,7 +53,8 @@ typedef struct		s_param
 	t_bool			graphic;
 	t_bool			hidden_mem;
 	t_bool			disp_aff;
-	t_champ			champs[4];
+	t_champ			champs[MAX_PLAYERS];
+	int				champs_amount;
 }					t_param;
 
 #endif /* !COREWAR_STRUCT_H */
