@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/05 22:25:26 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/06 19:44:36 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 01:08:26 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
 # define TEXT_PRINT_WIDTH		32
+
+# define VERB_LVL_COLOR			5
+# define VERB_LVL_OFFSET		6
+# define VERB_LVL_PC			7
+# define VERB_LVL_ASCII			8
 
 			# define IND_SIZE				2
 			# define DIR_SIZE				REG_SIZE

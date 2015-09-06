@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/14 16:00:35 by aeddi             #+#    #+#              #
-#    Updated: 2015/09/06 19:53:26 by plastic          ###   ########.fr        #
+#    Updated: 2015/09/07 00:05:13 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS_CW			=	main.c							\
 					args/parse_misc_options.c		\
 					parse_files.c					\
 					launch_virual_machine.c			\
+					byte_to_hex.c					\
 					print_memory.c
 
 OBJS_CW_DIR		=	$(OBJS_DIR)/corewar

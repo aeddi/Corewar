@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:03:07 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/06 19:34:46 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 01:08:27 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ typedef enum		e_bool
 
 typedef struct		s_byte
 {
-	int				color;
 	char			content;
+	int				color;
+	t_bool			is_pc;
 }					t_byte;
 
 typedef struct		s_header
@@ -41,6 +42,7 @@ typedef struct		s_champ
 	int				number;
 	t_header		header;
 	char			*code;
+	int				process;
 	int				color;
 }					t_champ;
 

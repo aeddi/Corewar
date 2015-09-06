@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/06 18:12:13 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/06 19:58:27 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 01:08:21 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ void		launch_virtual_machine(t_param *params)
 	t_byte	memory[MEM_SIZE];
 
 	load_champs(params, memory);
-	print_memory(memory);
+	print_memory(memory, params->verb_lvl);
 }

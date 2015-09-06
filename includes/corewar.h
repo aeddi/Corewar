@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:02:50 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/06 19:50:18 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 01:08:22 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	parse_files(t_param *params);
 
 void	launch_virtual_machine(t_param *params);
 
-void	print_memory(t_byte *memory);
+void	byte_to_hex(char byte, char hex[3]);
+
+void	print_memory(t_byte *memory, int verb_lvl);
 
 void	exit_error(char *error, char *detail, char *ex_path);
 
