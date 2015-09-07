@@ -6,7 +6,7 @@
 #    By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 13:51:53 by gponsine          #+#    #+#              #
-#    Updated: 2014/02/02 04:47:59 by gponsine         ###   ########.fr        #
+#    Updated: 2015/09/07 14:28:12 by gponsine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RM				=	rm -f
 
 SRC				=	$(shell find src -type f | grep '\.c')
 
-OBJ				=	$(shell find obj -type f | grep '\.o')
+OBJ				=	$(SRC:.c=.o)
 
 INC				=	-I inc						\
 					-I lib/libft/
@@ -37,7 +37,6 @@ $(NAME)			: $(SRC:.c=.o)
 
 %.o				: %.c
 					$(CC) $(CFLAG) -o $@ -c $< $(INC)
-					mv $@ obj
 
 fclean			: clean
 					@$(RM) $(NAME)
