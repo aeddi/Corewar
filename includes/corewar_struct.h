@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:03:07 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/07 01:08:27 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 15:35:52 by aeddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_byte
 	char			content;
 	int				color;
 	t_bool			is_pc;
+	t_bool			is_live;
 }					t_byte;
 
 typedef struct		s_header
@@ -48,10 +49,16 @@ typedef struct		s_champ
 
 typedef struct		s_process
 {
-	char			*prog_count;
+	int				prog_count;
 	char			reg[REG_NUMBER][REG_SIZE];
 	t_bool			carry;
 }					t_process;
+
+typedef struct		s_plist
+{
+	t_process		process;
+	struct s_plist	*next;
+}					t_plist;
 
 typedef struct		s_param
 {

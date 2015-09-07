@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:02:50 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/07 01:08:22 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 11:58:02 by aeddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define COREWAR_H
 
 # include <corewar_struct.h>
+
+# define FOREGROUND(x)	(x + 30)
+# define BACKGROUND(x)	(x + 40)
 
 /*
 **	Parameters functions

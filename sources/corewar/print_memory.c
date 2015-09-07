@@ -6,22 +6,33 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/06 19:06:12 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/07 01:08:19 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 14:22:07 by aeddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
 #include <libft.h>
 
-static void	print_byte(char byte, int color, t_bool is_pc)
+static void	print_byte(char byte, int color, t_bool is_pc, t_bool is_live)
 {
-	char	*colors[] = {"", "31", "32", "33", "34"};
 	char	hex[3];
 
-	ft_putstr("\033[1;");
-	ft_putstr(colors[color]);
 	if (is_pc)
-		ft_putstr(";47");
+		ft_putstr("\033[");
+	else
+		ft_putstr("\033[1;");
+	if (is_live)
+	{
+		ft_putnbr(FOREGROUND(color));
+		ft_putstr(";107");
+	}
+	else if (is_pc)
+	{
+		ft_putstr("30;");
+		ft_putnbr(BACKGROUND(color));
+	}
+	else if (color)
+		ft_putnbr(FOREGROUND(color));
 	ft_putchar('m');
 	byte_to_hex(byte, hex);
 	ft_putstr(hex);
@@ -38,11 +49,11 @@ static void	print_line(t_byte *memory, int verb_lvl)
 	{
 		cur = &memory[count];
 		if (verb_lvl >= VERB_LVL_PC)
-			print_byte(cur->content, cur->color, cur->is_pc);
+			print_byte(cur->content, cur->color, cur->is_pc, cur->is_live);
 		else if (verb_lvl >= VERB_LVL_COLOR)
-			print_byte(cur->content, cur->color, FALSE);
+			print_byte(cur->content, cur->color, FALSE, FALSE);
 		else
-			print_byte(cur->content, 0, FALSE);
+			print_byte(cur->content, 0, FALSE, FALSE);
 		count++;
 		if (count % 8 == 0 && count < TEXT_PRINT_WIDTH)
 			ft_putstr("  ");
@@ -74,11 +85,14 @@ static void	print_ascii(t_byte *memory)
 static void	print_offset_to_hex(short offset)
 {
 	char	*cast;
+	char	hex[3];
 
 	cast = (char *)&offset;
 	ft_putstr(" 0x");
-	print_byte(cast[1], 0, FALSE);
-	print_byte(cast[0], 0, FALSE);
+	byte_to_hex(cast[1], hex);
+	ft_putstr(hex);
+	byte_to_hex(cast[0], hex);
+	ft_putstr(hex);
 	ft_putstr(":   ");
 }
 
