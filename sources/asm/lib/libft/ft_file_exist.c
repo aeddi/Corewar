@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_file_exist.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/04 10:52:24 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/04 10:53:32 by aeddi            ###   ########.fr       */
+/*   Created: 2013/12/24 07:29:05 by gponsine          #+#    #+#             */
+/*   Updated: 2013/12/27 15:38:51 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
+#include <fcntl.h>
 
-int main(void)
+extern int	g_errno;
+
+int		ft_file_exist(const char *path)
 {
-	printf("asm\n");
-	return 0;
+	struct stat	s;
+
+	g_errno = 0;
+	if (lstat(path, &s) == 0)
+		return (1);
+	g_errno = ENOENT;
+	return (0);
 }
