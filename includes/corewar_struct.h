@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:03:07 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/07 15:35:52 by aeddi            ###   ########.fr       */
+/*   Updated: 2015/09/08 22:41:29 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define COREWAR_STRUCT_H
 
 # include <values.h>
+
+typedef long long unsigned int t_llui;
 
 typedef enum		e_bool
 {
@@ -28,6 +30,34 @@ typedef struct		s_byte
 	t_bool			is_pc;
 	t_bool			is_live;
 }					t_byte;
+
+typedef struct		s_process
+{
+	int				prog_count;
+	char			reg[REG_NUMBER][REG_SIZE];
+	t_bool			carry;
+	t_bool			alive;
+}					t_process;
+
+typedef struct		s_plist
+{
+	t_process		process;
+	struct s_plist	*next;
+	struct s_plist	*prev;
+}					t_plist; 
+
+typedef struct		s_vm_data
+{
+	int				cycle_to_die;
+	t_llui			cycle_count;
+	int				last_check;
+	int				check_count;
+	int				nb_live_champs[MAX_PLAYERS];
+	int				nb_proc_champs[MAX_PLAYERS];
+	int				last_champ_alive;
+	t_byte			memory[MEM_SIZE];
+	t_plist			*head;
+}					t_vm_data;
 
 typedef struct		s_header
 {
@@ -46,19 +76,6 @@ typedef struct		s_champ
 	int				process;
 	int				color;
 }					t_champ;
-
-typedef struct		s_process
-{
-	int				prog_count;
-	char			reg[REG_NUMBER][REG_SIZE];
-	t_bool			carry;
-}					t_process;
-
-typedef struct		s_plist
-{
-	t_process		process;
-	struct s_plist	*next;
-}					t_plist;
 
 typedef struct		s_param
 {

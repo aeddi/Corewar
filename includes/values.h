@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/05 22:25:26 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/07 01:08:26 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 22:57:34 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@
 
 # define TEXT_PRINT_WIDTH		32
 
+# define VERB_LVL_LIVES			1
+# define VERB_LVL_CYCLES		2
+# define VERB_LVL_OPERATIONS	3
+# define VERB_LVL_DEATH			4
 # define VERB_LVL_COLOR			5
 # define VERB_LVL_OFFSET		6
 # define VERB_LVL_PC			7

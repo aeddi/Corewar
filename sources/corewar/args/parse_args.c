@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 12:16:08 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/06 19:22:56 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/07 23:17:41 by plastic          ###   ########.fr       */
 /* ************************************************************************** */
 
 #include <corewar.h>
@@ -19,8 +19,8 @@ static void	set_default_params(t_param *params, char *ex_path)
 
 	count = 0;
 	params->ex_path = ex_path;
-	params->exit_dump = -1;
-	params->loop_dump = 0;
+	params->exit_dump = UNSET;
+	params->loop_dump = UNSET;
 	params->verb_lvl = 0;
 	params->graphic = FALSE;
 	params->hidden_mem = FALSE;
@@ -30,7 +30,7 @@ static void	set_default_params(t_param *params, char *ex_path)
 		params->champs[count].path = NULL;
 		params->champs[count].number = 0;
 		params->champs[count].code = NULL;
-		params->champs[count].color = -1;
+		params->champs[count].color = UNSET;
 		count++;
 	}
 }
