@@ -44,24 +44,25 @@ typedef struct	s_parse
 	t_type		last_type;
 	t_list		*label;
 	t_list		*called_label;
+	int			i;
 }				t_parse;
 
-t_champ	*parse(char *file);
-int		parse_next(t_parse *p);
-int		read_lexem(t_parse *p);
-int		parse_cmd(t_parse *p);
+t_champ			*parse(char *file);
+int				parse_next(t_parse *p);
+int				read_lexem(t_parse *p);
+int				parse_cmd(t_parse *p);
 
-int		parse_label(t_parse *p);
-int		chk_label(char *name);
-int		call_label(t_parse *p, char *name, int op_bytepos);
-int		add_label(t_parse *p);
+int				parse_label(t_parse *p);
+int				chk_label(char *name);
+int				call_label(t_parse *p, char *name, int op_bytepos);
+int				add_label(t_parse *p);
 
-int		parse_instruction(t_parse *p);
-t_op	parse_opcode(t_parse *p);
-int		parse_opcode_encodebyte(t_parse *p, t_op op);
-int		parse_arg_reg(t_parse *p);
-int		parse_arg_dir(t_parse *p, int op_bytepos, t_op op);
-int		parse_arg_ind(t_parse *p, int op_bytepos);
+int				parse_instruction(t_parse *p);
+t_op			parse_opcode(t_parse *p);
+int				parse_opcode_encodebyte(t_parse *p, t_op op);
+int				parse_arg_reg(t_parse *p);
+int				parse_arg_dir(t_parse *p, int op_bytepos, t_op op);
+int				parse_arg_ind(t_parse *p, int op_bytepos);
 
 # define LINE_NBR p->line_nbr
 # define LAST_LINE p->last_line
@@ -81,4 +82,4 @@ int		parse_arg_ind(t_parse *p, int op_bytepos);
 # define CALL_LABEL_ARGINDEX p->called_label->content_size
 # define CALL_LABEL_NEXT p->called_label->next
 
-#endif /* !ASM_PARSE_H */
+#endif

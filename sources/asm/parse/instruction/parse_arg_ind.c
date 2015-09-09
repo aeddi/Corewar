@@ -18,7 +18,7 @@ int		parse_arg_ind(t_parse *p, int op_bytepos)
 	int		i;
 
 	i = 0;
-	while (LEXEM[i] && ft_isdigit(LEXEM[i]))
+	while (LEXEM[i] && (ft_isdigit(LEXEM[i]) || (i == 0 && LEXEM[i] == '-')))
 		i++;
 	if (i > 0 && !LEXEM[i])
 	{

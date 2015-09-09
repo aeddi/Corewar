@@ -62,7 +62,6 @@ int			parse_arg_dir_hasnt_idx(t_parse *p, int op_bytepos)
 		add_bytecode(CHAMPION, 0);
 	}
 	else
-
 		error(ARG, p);
 	return (1);
 }

@@ -61,6 +61,7 @@ SRCS_AS			=	main.c										\
 					champion/new_champion.c						\
 					error/error_arg.c							\
 					error/error.c								\
+					error/error_part_two.c						\
 					parse/parse.c								\
 					parse/parse_cmd.c							\
 					parse/parse_next.c							\

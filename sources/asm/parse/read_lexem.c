@@ -13,7 +13,7 @@
 #include "asm_parse.h"
 #include "asm_error.h"
 
-static int save_lexem(t_parse *p)
+static int	save_lexem(t_parse *p)
 {
 	char	*t;
 	char	c[2];
@@ -22,7 +22,8 @@ static int save_lexem(t_parse *p)
 	if (LEXEM)
 		free(LEXEM);
 	LEXEM = ft_strnew(0);
-	i = c[1] = 0;
+	i = 0;
+	c[1] = 0;
 	while (LINE(POS)
 			&& LINE(POS) != ' ' && LINE(POS) != '\t' && LINE(POS) != ',')
 	{
@@ -37,14 +38,8 @@ static int save_lexem(t_parse *p)
 	return (i--);
 }
 
-int			read_lexem(t_parse *p)
+int			read_lexem_check(t_parse *p, int i)
 {
-	int		i;
-
-	if (POS != 0 || LINE(POS) == ' ' || LINE(POS) == '\t')
-		if (!parse_next(p) && !(TYPE = NOTHING))
-			return (0);
-	i = save_lexem(p);
 	if (LAST_LINE == LINE_NBR && LAST_TYPE == LABEL_TYPE)
 		TYPE = OPCODE_TYPE;
 	else if (LINE(POS) == '.')
@@ -56,7 +51,8 @@ int			read_lexem(t_parse *p)
 	else if (LAST_TYPE == OPCODE_TYPE && LINE(POS) == DIRECT_CHAR)
 		TYPE = ARG_DIR_TYPE;
 	else if (LAST_TYPE == OPCODE_TYPE
-			&& (ft_isdigit(LINE(POS)) || LINE(POS) == LABEL_CHAR))
+			&& (ft_isdigit(LINE(POS)) || LINE(POS) == LABEL_CHAR
+				|| LINE(POS) == '-'))
 		TYPE = ARG_IND_TYPE;
 	else if (ft_isalpha(LINE(POS)))
 		TYPE = OPCODE_TYPE;
@@ -66,5 +62,14 @@ int			read_lexem(t_parse *p)
 		error(INVALID_CHAR, p);
 	LAST_LINE = LINE_NBR;
 	LAST_TYPE = TYPE;
+	return (1);
+}
+
+int			read_lexem(t_parse *p)
+{
+	if (POS != 0 || LINE(POS) == ' ' || LINE(POS) == '\t')
+		if (!parse_next(p) && !(TYPE = NOTHING))
+			return (0);
+	read_lexem_check(p, save_lexem(p));
 	return (1);
 }

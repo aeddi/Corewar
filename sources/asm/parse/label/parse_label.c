@@ -26,5 +26,3 @@ int	parse_label(t_parse *p)
 		POS++;
 	return (1);
 }
-
-

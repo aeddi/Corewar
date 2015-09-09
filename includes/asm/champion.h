@@ -25,9 +25,9 @@ typedef struct		s_champ
 	int				len;
 }					t_champ;
 
-t_champ		*new_champion(void);
-int			del_champion(t_champ *champ);
-int			add_bytecode(t_champ *champ, char byte);
-int			create_champion(t_champ *champ, char *filename);
+t_champ				*new_champion(void);
+int					del_champion(t_champ *champ);
+int					add_bytecode(t_champ *champ, char byte);
+int					create_champion(t_champ *champ, char *filename);
 
-#endif /* !CHAMPION_H */
+#endif

@@ -53,7 +53,6 @@ int			add_label(t_parse *p)
 		LABEL = tmp_label;
 		CALL_LABEL = CALL_LABEL_NEXT;
 	}
-
 	CALL_LABEL = tmp_call;
 	return (1);
 }

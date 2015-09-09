@@ -28,6 +28,7 @@ typedef enum	e_error
 }				t_error;
 
 int		error(t_error e, void *p);
+int		error_part_two(t_error e, void *p);
 int		error_arg(int ac, char **av);
 
-#endif /* !ASM_ERROR_H */
+#endif

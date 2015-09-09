@@ -17,8 +17,9 @@ int		chk_label(char *name)
 {
 	int		i;
 	int		j;
-	char	label_chars[] = LABEL_CHARS;
+	char	*label_chars;
 
+	label_chars = ft_strdup(LABEL_CHARS);
 	if (!name || !name[0])
 		return (0);
 	i = 0;
@@ -33,5 +34,6 @@ int		chk_label(char *name)
 		}
 		i++;
 	}
+	free(label_chars);
 	return (1);
 }

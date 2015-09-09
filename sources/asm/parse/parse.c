@@ -35,7 +35,7 @@ static int	get_line(t_parse *p)
 	return (1);
 }
 
-static int			parse_line(t_parse *p)
+static int	parse_line(t_parse *p)
 {
 	read_lexem(p);
 	if (TYPE == NOTHING)
