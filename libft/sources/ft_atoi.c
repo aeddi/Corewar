@@ -3,38 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 09:04:14 by aeddi             #+#    #+#             */
-/*   Updated: 2014/05/19 19:32:08 by aeddi            ###   ########.fr       */
+/*   Created: 2013/09/25 11:05:38 by gponsine          #+#    #+#             */
+/*   Updated: 2013/12/08 01:57:31 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int	ft_atoi(const char *str)
+long long		ft_atoi(const char *str)
 {
-	int	res;
-	int	neg;
-	int	sig;
+	long long	i;
+	long long	n;
+	long long	r;
 
-	res = 0;
-	neg = 0;
-	sig = 0;
-	while (ft_isspace(*str))
+	i = n = r = 0;
+	while (*str == ' ' || *str == '\n' || *str == '\t' || *str == '\v'
+			|| *str == '\f' || *str == '\r')
 		str++;
-	while (*str == '-' || *str == '+')
+	while ((*str == '-' || *str == '+') && ++i && ++str)
+		if (*(str - 1) == '-')
+			n++;
+	while (*str >= '0' && *str <= '9' && i <= 1)
 	{
-		if (*str == '-')
-			neg++;
-		sig++;
+		r *= 10;
+		r += *str - 48;
 		str++;
 	}
-	while (*str >= '0' && *str <= '9' && sig <= 1)
-	{
-		res *= 10;
-		res += *str++ - '0';
-	}
-	res *= (neg) ? -1 : 1;
-	return (res);
+	if (n)
+		r *= -1;
+	return (r);
 }

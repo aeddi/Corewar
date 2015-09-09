@@ -3,35 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 10:33:47 by aeddi             #+#    #+#             */
-/*   Updated: 2014/05/19 19:49:58 by aeddi            ###   ########.fr       */
+/*   Created: 2013/11/20 17:11:34 by gponsine          #+#    #+#             */
+/*   Updated: 2013/11/24 22:20:43 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*last;
-	int		index;
-	int		match;
+	unsigned char	*ptr;
+	int			i;
 
-	index = ft_strlen(s) + 1;
-	match = 0;
-	while (index)
+	ptr = (unsigned char *)s;
+	i = ft_strlen(s);
+	while (i != -1)
 	{
-		if (*s == (char)c)
-		{
-			last = (char *)s;
-			match++;
-		}
-		s++;
-		index--;
+		if (ptr[i] == (unsigned char)c)
+			return ((char *)&ptr[i]);
+		i--;
 	}
-	if (match)
-		return (last);
 	return (NULL);
 }
