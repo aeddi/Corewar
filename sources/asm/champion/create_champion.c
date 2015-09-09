@@ -13,10 +13,10 @@
 #include "champion.h"
 #include "op.h"
 
-int			create_champion(t_champ *champion, char *name)
+int		create_champion(t_champ *champion, char *name)
 {
-	int		fd;
-	char	*filename;
+	int			fd;
+	char		*filename;
 	t_header	header;
 
 	filename = ft_strrchr(name, 's');
