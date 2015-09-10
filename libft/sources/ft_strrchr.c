@@ -6,7 +6,7 @@
 /*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 17:11:34 by gponsine          #+#    #+#             */
-/*   Updated: 2013/11/24 22:20:43 by gponsine         ###   ########.fr       */
+/*   Updated: 2015/01/20 11:07:16 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	unsigned char	*ptr;
-	int			i;
+	int				i;
 
 	ptr = (unsigned char *)s;
 	i = ft_strlen(s);

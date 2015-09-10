@@ -6,29 +6,30 @@
 /*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 16:31:35 by gponsine          #+#    #+#             */
-/*   Updated: 2013/11/24 14:28:24 by gponsine         ###   ########.fr       */
+/*   Updated: 2015/01/25 18:32:17 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*join;
-	unsigned int	len;
-	unsigned int	i;
-	unsigned int	j;
 
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	join = ft_strnew(len);
-	i = 0;
-	while (s1[i] != '\0')
+	join = NULL;
+	if (s1 && s2)
 	{
-		join[i] = s1[i];
-		i++;
+		join = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+		ft_strcpy(join, s1);
+		ft_strcpy(&join[ft_strlen(s1)], s2);
 	}
-	j = 0;
-	while (s2[j])
-		join[i++] = s2[j++];
+	else if (s1)
+	{
+		join = ft_strdup(s1);
+	}
+	else if (s2)
+	{
+		join = ft_strdup(s2);
+	}
 	return (join);
 }

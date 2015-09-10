@@ -6,7 +6,7 @@
 /*   By: gponsine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/09/17 10:16:19 by gponsine          #+#    #+#             */
-/*   Updated: 2013/11/24 22:20:26 by gponsine         ###   ########.fr       */
+/*   Updated: 2015/01/20 10:41:17 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int		ft_strcmp(const char *s1, const char *s2)
 	i = 0;
 	while (*s1 && *s2 && *s1 == *s2 && ++s1 && ++s2 && ++i)
 		;
-	return ((unsigned char) *s1 - (unsigned char) *s2);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
