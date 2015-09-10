@@ -13,7 +13,6 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <ft_errno.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdint.h>
@@ -57,7 +56,7 @@ void				ft_bzero(void *s, size_t n);
 void				*ft_memalloc(size_t size);
 void				*ft_memcpy(void *s1, const void *s2, size_t n);
 
-long long			ft_atoi(const char *str);
+int					ft_atoi(const char *str);
 int					ft_file_exist(const char *path);
 uint32_t			ft_revint32(uint32_t nb);
 
