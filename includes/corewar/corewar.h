@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:02:50 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/08 22:40:45 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/09 23:32:25 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ int		count_list(t_plist *head, int player);
 */
 void	launch_virtual_machine(t_param *params);
 void	exec_virtual_machine(t_param *params, t_vm_data *data);
+
+/*
+**	Instruction cycle functions
+*/
+void	instruction_cycle(t_param *params, t_vm_data *data);
+t_op	*get_op_detail(int op_code);
+void	reset_instruction(t_fetched *instruction)	;
+void	fetch_instruction(t_process *process, t_byte *memory);
 
 /*
 **	Text mode functions

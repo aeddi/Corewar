@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/14 16:00:35 by aeddi             #+#    #+#              #
-#    Updated: 2015/09/09 11:14:02 by plastic          ###   ########.fr        #
+#    Updated: 2015/09/09 23:34:21 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,8 @@ SRCS_CW			=	main.c							\
 					vm/launch_virtual_machine.c		\
 					vm/parse_files.c				\
 					vm/process_list.c				\
+					vm/cycle/instruction_cycle.c	\
+					vm/cycle/fetch_instruction.c	\
 					print/print_before_after.c		\
 					print/print_infos.c				\
 					print/print_memory.c
@@ -107,6 +109,7 @@ $(OBJS_DIR)		:	make_libft
 	@mkdir -p $(OBJS_CW_DIR)
 	@mkdir -p $(OBJS_CW_DIR)/args
 	@mkdir -p $(OBJS_CW_DIR)/vm
+	@mkdir -p $(OBJS_CW_DIR)/vm/cycle
 	@mkdir -p $(OBJS_CW_DIR)/print
 	@mkdir -p $(OBJS_AS_DIR)
 	@mkdir -p $(OBJS_AS_DIR)/champion

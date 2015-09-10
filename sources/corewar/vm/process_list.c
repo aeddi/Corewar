@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/07 15:32:28 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/08 22:56:47 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/10 00:13:22 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	new_process(t_process proc, t_plist *head)
 	new = (t_plist *)malloc(sizeof(t_plist));
 	new->process = proc;
 	new->next = head->next;
+	new->prev = head;
 	head->next = new;
 	if (new->next)
 		new->next->prev = new;

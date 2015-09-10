@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:03:07 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/08 22:41:29 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/09 23:31:34 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,36 @@ typedef struct		s_byte
 	t_bool			is_live;
 }					t_byte;
 
+typedef	struct		s_fetched
+{
+	int				opcode;
+	int				type_first;
+	int				val_first;
+	int				type_second;
+	int				val_second;
+	int				type_third;
+	int				val_third;
+	int				size;
+}					t_fetched;
+
+typedef struct		s_op
+{
+	char			*mnemonic;
+	int				arg_nbr;
+	int				arg_type[3];
+	int				op_code;
+	int				cycle;
+	char			*description;
+	int				encoding;
+	int				has_idx;
+}					t_op;
+
 typedef struct		s_process
 {
 	int				prog_count;
 	char			reg[REG_NUMBER][REG_SIZE];
+	int				cycle_rest;
+	t_fetched		instruction;
 	t_bool			carry;
 	t_bool			alive;
 }					t_process;

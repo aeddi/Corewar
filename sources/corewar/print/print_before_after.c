@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/09 09:17:16 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/09 09:18:00 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/09 21:39:49 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_players_intro(t_param *params)
 		ft_putchar('m');
 		ft_putstr(params->champs[count].header.prog_name);
 		ft_putstr("\033[0m");
-		ft_putstr(" with a weight of ");
+		ft_putstr(" weighing ");
 		ft_putnbr(params->champs[count].header.prog_size);
 		ft_putstr(" bytes, says: ");
 		ft_putstr(" \033[1m");

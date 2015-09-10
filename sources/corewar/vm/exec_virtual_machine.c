@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/07 20:44:47 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/08 23:03:03 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/10 00:04:47 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static void		delete_dead_process(t_param *params, t_vm_data *data)
 	{
 		data->nb_proc_champs[count] = count_list(data->head,
 												params->champs[count].number);
-		if (!data->nb_proc_champs[count])
+		if (!data->nb_proc_champs[count] && !params->graphic
+			&& params->verb_lvl >= VERB_LVL_DEATH)
 			print_death(count, params);
 		count++;
 	}
@@ -99,7 +100,7 @@ void	exec_virtual_machine(t_param *params, t_vm_data *data)
 //		else
 //			display_ncurses(params, data);
 		data->cycle_count++;
-//		do_cycle(params, data);
+		instruction_cycle(params, data);
 		if (!check_fight_state(params, data))
 			return ;
 	}

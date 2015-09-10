@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/06 18:12:13 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/08 22:54:25 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/09 23:23:59 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	init_process_list(t_param *params, t_vm_data *data)
 		data->memory[iter * offset].is_pc = TRUE;
 		ft_bzero(current.reg, REG_NUMBER * REG_SIZE);
 		*(int *)(&current.reg[0]) = params->champs[iter].number;
+		current.cycle_rest = 0;
+		reset_instruction(&current.instruction);
 		current.carry = TRUE;
 		current.alive = FALSE;
 		new_process(current, data->head);
