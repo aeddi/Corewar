@@ -19,7 +19,7 @@ static int	parse_arg_dir_has_idx(t_parse *p, int op_bytepos)
 
 	TYPE = ARG_IND_TYPE;
 	i = 1;
-	while (LEXEM[i] && ft_isdigit(LEXEM[i]))
+	while (LEXEM[i] && (ft_isdigit(LEXEM[i]) || (i = 1 && LEXEM[i] == '-')))
 		i++;
 	if (i > 1 && !LEXEM[i])
 	{
@@ -43,7 +43,7 @@ int			parse_arg_dir_hasnt_idx(t_parse *p, int op_bytepos)
 	int		i;
 
 	i = 1;
-	while (LEXEM[i] && ft_isdigit(LEXEM[i]))
+	while (LEXEM[i] && (ft_isdigit(LEXEM[i]) || (i = 1 && LEXEM[i] == '-')))
 		i++;
 	if (i > 1 && !LEXEM[i])
 	{

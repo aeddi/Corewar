@@ -14,9 +14,11 @@
 
 int		parse_next(t_parse *p)
 {
-	while (LINE(POS) && LINE(POS) != ' ' && LINE(POS) != '\t')
+	while (LINE(POS) && LINE(POS) != ' ' && LINE(POS) != '\t'
+		&& LINE(POS) != ',')
 		POS++;
-	while (LINE(POS) && (LINE(POS) == ' ' || LINE(POS) == '\t'))
+	while (LINE(POS) && (LINE(POS) == ' ' || LINE(POS) == '\t'
+		|| LINE(POS) == ','))
 		POS++;
 	if (LINE(POS) && LINE(POS) != ';')
 		return (1);

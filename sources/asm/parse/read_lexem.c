@@ -40,7 +40,9 @@ static int	save_lexem(t_parse *p)
 
 int			read_lexem_check(t_parse *p, int i)
 {
-	if (LAST_LINE == LINE_NBR && LAST_TYPE == LABEL_TYPE)
+	if (!LINE(POS) || LINE(POS) == COMMENT_CHAR || LINE(POS) == ';')
+		TYPE = NOTHING;
+	else if (LAST_LINE == LINE_NBR && LAST_TYPE == LABEL_TYPE)
 		TYPE = OPCODE_TYPE;
 	else if (LINE(POS) == '.')
 		TYPE = CMD_TYPE;
@@ -56,8 +58,6 @@ int			read_lexem_check(t_parse *p, int i)
 		TYPE = ARG_IND_TYPE;
 	else if (ft_isalpha(LINE(POS)))
 		TYPE = OPCODE_TYPE;
-	else if (!LINE(POS) || LINE(POS) == COMMENT_CHAR)
-		TYPE = NOTHING;
 	else
 		error(INVALID_CHAR, p);
 	LAST_LINE = LINE_NBR;
