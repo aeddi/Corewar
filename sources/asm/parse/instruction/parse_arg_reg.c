@@ -17,7 +17,7 @@ int		parse_arg_reg(t_parse *p)
 {
 	int		n;
 
-	if ((n = ft_atoi(&LEXEM[1])) && n && n <= REG_NUMBER)
+	if ((n = ft_atoi(&LEXEM[1])) && n <= REG_NUMBER)
 		add_bytecode(CHAMPION, n & 0xFF);
 	else
 		error(ARG, p);

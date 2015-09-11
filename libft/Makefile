@@ -26,7 +26,7 @@ SRCS			=	ft_strlen.c ft_strnew.c ft_strdup.c ft_strjoin.c				\
 					ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c				\
 					ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c	\
 					ft_bzero.c ft_memalloc.c ft_memcpy.c							\
-					ft_atoi.c ft_revint32.c ft_errno.c ft_file_exist.c
+					ft_atoi.c ft_revint32.c ft_file_exist.c
 
 all				:	$(NAME)
 

@@ -61,7 +61,8 @@ live	%1
 fork	%:wall
 fork	%:live
 
-wall:	live	%42
+wall:
+live	%42
 st      r8,-400
 st      r8,-400
 st      r8,-400

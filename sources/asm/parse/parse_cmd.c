@@ -55,19 +55,19 @@ static int	parse_cmd_string_comment(t_parse *p)
 		error(INVALID_CHAR, p);
 	s = ft_strdup("");
 	POS++;
-	while (LINE(POS) && LINE(POS) != '"')
+	while (LINE(POS) && LINE(POS) != '"' && (t = s))
 	{
-		t = s;
 		c[0] = LINE(POS);
 		s = ft_strjoin(s, c);
 		free(t);
 		POS++;
 	}
-	if (LINE(POS) == '"')
-		p->champ->comment = ft_strdup(s);
+	if (LINE(POS) == '\0' && (s = ft_strjoin(s, "\n")))
+		while (read(p->fd, &c, 1) && c[0] != '"' && (t = s)
+			&& (s = ft_strjoin(s, c)))
+			free(t);
+	p->champ->comment = ft_strdup(s);
 	free(s);
-	if (LINE(POS) == '\0')
-		error(INVALID_CHAR, p);
 	return (1);
 }
 

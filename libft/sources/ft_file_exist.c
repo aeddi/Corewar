@@ -13,15 +13,11 @@
 #include "libft.h"
 #include <fcntl.h>
 
-extern int	g_errno;
-
 int		ft_file_exist(const char *path)
 {
 	struct stat	s;
 
-	g_errno = 0;
 	if (lstat(path, &s) == 0)
 		return (1);
-	g_errno = ENOENT;
 	return (0);
 }
