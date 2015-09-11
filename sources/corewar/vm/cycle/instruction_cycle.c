@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/09 12:01:32 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/09 23:37:27 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/11 17:59:50 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,23 @@ t_op    g_op_tab[NBR_OP] =
 		"long load index", 1, 1},
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
-	{0, 0, {0}, 0, 0, 0, 0, 0}
 };
 
 void		reset_instruction(t_fetched *instruction)
 {
-	instruction->opcode = UNSET;
-	instruction->type_first = UNSET;
-	instruction->val_first = UNSET;
-	instruction->type_second = UNSET;
-	instruction->val_second = UNSET;
-	instruction->type_third = UNSET;
-	instruction->val_third = UNSET;
-	instruction->size = UNSET;
+	int	count;
+
+	count = 0;
+	instruction->op_code = UNSET;
+	instruction->name = NULL;
+	instruction->pc_gap = UNSET;
+	while (count < MAX_PARAMS)
+	{
+		instruction->type[count] = UNSET;
+		instruction->size[count] = UNSET;
+		instruction->value[count] = UNSET;
+		count++;
+	}
 }
 
 t_op		*get_op_detail(int op_code)
@@ -66,26 +70,49 @@ t_op		*get_op_detail(int op_code)
 	return (NULL);
 }
 
+static void	move_prog_count(t_process *process, t_byte *memory, t_param *params)
+{
+	int	prog_count;
+	int	count;
+
+	count = 0;
+	while (*(int *)&process->reg[0] != params->champs[count].number)
+		count++;
+	if (memory[process->prog_count].color == count + 1)
+		memory[process->prog_count].is_pc = FALSE;
+	if (process->instruction.pc_gap != UNSET)
+		prog_count = process->prog_count + process->instruction.pc_gap;
+	else
+		prog_count = process->prog_count + 1;
+	process->prog_count = prog_count % MEM_SIZE;
+	memory[process->prog_count].color = count + 1;
+	memory[process->prog_count].is_pc = TRUE;
+}
+
 void		instruction_cycle(t_param *params, t_vm_data *data)
 {
-	t_plist	*iter;
+	t_plist		*iter;
+	t_process	*process;
 
 	iter = data->head->next;
 	while (iter)
 	{
-		if (iter->process.cycle_rest)
-			iter->process.cycle_rest--;
-		if (!iter->process.cycle_rest)
+		process = &iter->process;
+		if (process->cycle_rest)
+			process->cycle_rest--;
+		if (!process->cycle_rest)
 		{
-			if (iter->process.instruction.opcode != UNSET)
+			if (process->instruction.op_code != UNSET)
 			{
-				/* execute_instruction(iter->process, data->memory, params); */
-				reset_instruction(&iter->process.instruction);
+				execute_instruction(&iter->process, params, data);
+				move_prog_count(process, data->memory, params);
+				reset_instruction(&process->instruction);
 			}
-			fetch_instruction(&iter->process, data->memory);
-		//	decode_instruction(iter->process.instruction);
-(void)params;
+			fetch_instruction(process, data->memory);
+			decode_instruction(&process->instruction, process->prog_count);
 		}
+		if (process->instruction.op_code == UNSET)
+			move_prog_count(process, data->memory, params);
 		iter = iter->next;
 	}
 }

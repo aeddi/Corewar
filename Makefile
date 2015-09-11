@@ -6,7 +6,7 @@
 #    By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/14 16:00:35 by aeddi             #+#    #+#              #
-#    Updated: 2015/09/09 23:34:21 by plastic          ###   ########.fr        #
+#    Updated: 2015/09/11 18:05:51 by plastic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,10 +41,29 @@ SRCS_CW			=	main.c							\
 					args/parse_misc_options.c		\
 					vm/exec_virtual_machine.c		\
 					vm/launch_virtual_machine.c		\
+					vm/get_memory.c					\
 					vm/parse_files.c				\
 					vm/process_list.c				\
 					vm/cycle/instruction_cycle.c	\
 					vm/cycle/fetch_instruction.c	\
+					vm/cycle/decode_instruction.c	\
+					vm/cycle/execute_instruction.c	\
+					vm/operations/op_add.c			\
+					vm/operations/op_aff.c			\
+					vm/operations/op_and.c			\
+					vm/operations/op_fork.c			\
+					vm/operations/op_ld.c			\
+					vm/operations/op_ldi.c			\
+					vm/operations/op_lfork.c		\
+					vm/operations/op_live.c			\
+					vm/operations/op_lld.c			\
+					vm/operations/op_lldi.c			\
+					vm/operations/op_or.c			\
+					vm/operations/op_st.c			\
+					vm/operations/op_sti.c			\
+					vm/operations/op_sub.c			\
+					vm/operations/op_xor.c			\
+					vm/operations/op_zjmp.c			\
 					print/print_before_after.c		\
 					print/print_infos.c				\
 					print/print_memory.c
@@ -109,6 +128,7 @@ $(OBJS_DIR)		:	make_libft
 	@mkdir -p $(OBJS_CW_DIR)
 	@mkdir -p $(OBJS_CW_DIR)/args
 	@mkdir -p $(OBJS_CW_DIR)/vm
+	@mkdir -p $(OBJS_CW_DIR)/vm/operations
 	@mkdir -p $(OBJS_CW_DIR)/vm/cycle
 	@mkdir -p $(OBJS_CW_DIR)/print
 	@mkdir -p $(OBJS_AS_DIR)

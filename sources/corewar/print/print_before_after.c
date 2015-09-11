@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/09 09:17:16 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/09 21:39:49 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/11 15:20:52 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_players_intro(t_param *params)
 	count = 0;
 	while (count < params->champs_amount)
 	{
-		ft_putstr("Player ");
+		ft_putstr("Player #");
 		ft_putnbr(params->champs[count].number);
 		ft_putstr(" \033[1;");
 		ft_putnbr(FOREGROUND(count + 1));

@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/07 20:44:47 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/10 00:04:47 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/11 16:35:22 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	exec_virtual_machine(t_param *params, t_vm_data *data)
 				print_turn(params, data);
 			if (data->cycle_count >= (t_llui)params->exit_dump)
 			{
-				print_memory(data->memory, params->verb_lvl);
+				print_memory(data->memory, params->verb_lvl, FALSE);
 				data->last_champ_alive = UNSET;
 				return ;
 			}

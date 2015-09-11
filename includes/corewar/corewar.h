@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:02:50 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/09 23:32:25 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/11 17:28:07 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		count_list(t_plist *head, int player);
 */
 void	launch_virtual_machine(t_param *params);
 void	exec_virtual_machine(t_param *params, t_vm_data *data);
+t_byte	*get_memory(t_byte *memory, int index);
 
 /*
 **	Instruction cycle functions
@@ -51,14 +52,37 @@ void	instruction_cycle(t_param *params, t_vm_data *data);
 t_op	*get_op_detail(int op_code);
 void	reset_instruction(t_fetched *instruction)	;
 void	fetch_instruction(t_process *process, t_byte *memory);
+void	decode_instruction(t_fetched *instruction, int prog_count);
+void	execute_instruction(t_process *proc, t_param *params, t_vm_data *data);
+
+/*
+**	Operations functions
+*/
+void	op_live(t_process *process, t_param *params, t_vm_data *data);
+void	op_ld(t_process *process, t_param *params, t_vm_data *data);
+void	op_st(t_process *process, t_param *params, t_vm_data *data);
+void	op_add(t_process *process, t_param *params, t_vm_data *data);
+void	op_sub(t_process *process, t_param *params, t_vm_data *data);
+void	op_and(t_process *process, t_param *params, t_vm_data *data);
+void	op_or(t_process *process, t_param *params, t_vm_data *data);
+void	op_xor(t_process *process, t_param *params, t_vm_data *data);
+void	op_zjmp(t_process *process, t_param *params, t_vm_data *data);
+void	op_ldi(t_process *process, t_param *params, t_vm_data *data);
+void	op_sti(t_process *process, t_param *params, t_vm_data *data);
+void	op_fork(t_process *process, t_param *params, t_vm_data *data);
+void	op_lld(t_process *process, t_param *params, t_vm_data *data);
+void	op_lldi(t_process *process, t_param *params, t_vm_data *data);
+void	op_lfork(t_process *process, t_param *params, t_vm_data *data);
+void	op_aff(t_process *process, t_param *params, t_vm_data *data);
 
 /*
 **	Text mode functions
 */
-void	print_memory(t_byte *memory, int verb_lvl);
+void	print_memory(t_byte *memory, int verb_lvl, t_bool pause);
 void	print_players_intro(t_param *params);
 void	print_turn(t_param *params, t_vm_data *data);
 void	print_death(int count, t_param *params);
+void	print_operation(t_process *process);
 void	print_winner(t_param *params, t_vm_data *data);
 
 /*

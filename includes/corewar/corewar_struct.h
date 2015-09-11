@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:03:07 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/09 23:31:34 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/11 18:00:14 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ typedef struct		s_byte
 
 typedef	struct		s_fetched
 {
-	int				opcode;
-	int				type_first;
-	int				val_first;
-	int				type_second;
-	int				val_second;
-	int				type_third;
-	int				val_third;
-	int				size;
+	int				op_code;
+	char			*name;
+	int				type[3];
+	int				size[3];
+	int				value[3];
+	int				pc_gap;
 }					t_fetched;
 
 typedef struct		s_op

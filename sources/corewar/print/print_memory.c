@@ -6,11 +6,12 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/06 19:06:12 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/09 11:32:26 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/11 16:59:38 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
+#include <stdio.h>
 #include <libft.h>
 
 static void	print_byte(char byte, int color, t_bool is_pc, t_bool is_live)
@@ -96,9 +97,10 @@ static void	print_offset_to_hex(short offset)
 	ft_putstr(":   ");
 }
 
-void		print_memory(t_byte *memory, int verb_lvl)
+void		print_memory(t_byte *memory, int verb_lvl, t_bool pause)
 {
 	int		count;
+	char	buf;
 
 	count = 0;
 	ft_putchar('\n');
@@ -115,4 +117,10 @@ void		print_memory(t_byte *memory, int verb_lvl)
 		count += TEXT_PRINT_WIDTH;
 	}
 	ft_putchar('\n');
+	if (pause)
+	{
+		ft_putstr("  Press \033[1mENTER\033[0m key to continue ");
+		while (read(0, &buf, 1) && buf != '\n' & buf != EOF)
+			 ;
+	}
 }
