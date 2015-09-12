@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/07 23:08:13 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/11 16:35:48 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/12 10:06:30 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ void	print_death(int count, t_param *params)
 	ft_putstr(params->champs[count].header.prog_name);
 	ft_putstr("\033[0m");
 	ft_putendl(" is dead");
+}
+
+void	print_live(int caller, int pid)
+{
+	ft_putstr("Player #");
+	ft_putnbr(caller);
+	ft_putstr(" says: \"");
+	if (caller == pid)
+		ft_putstr("I am");
+	else
+	{
+		ft_putstr("Player #");
+		ft_putnbr(pid);
+		ft_putstr(" is");
+	}
+	ft_putendl(" alive\"");
 }
 
 void	print_operation(t_process *process)

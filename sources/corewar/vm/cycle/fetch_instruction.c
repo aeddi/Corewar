@@ -6,11 +6,12 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/09 12:06:54 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/11 17:05:07 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/12 14:52:19 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
+#include <libft.h>
 
 static int		is_compatible(int type, int possibilities)
 {
@@ -48,7 +49,7 @@ static t_bool	check_params_type(char encoding, t_process *process, t_op *op)
 							op->arg_type[count]);
 		if (ret == UNSET)
 		{
-			reset_instruction(&process->instruction);
+			reset_instruction(process, FALSE);
 			return (FALSE);
 		}
 		if (ret == T_DIR && !op->has_idx)
@@ -91,18 +92,18 @@ static void		fetch_memory(t_process *process, t_byte *memory, int encoding)
 	{
 		process->instruction.value[count] = 0;
 		cast = (char *)&process->instruction.value[count];
-		count2 = 0;
-		while (count2 < process->instruction.size[count])
+		count2 = -1;
+		while (++count2 < process->instruction.size[count])
 		{
 			cast[(process->instruction.size[count] - 1) - count2] =
 					get_memory(memory, prog_count + count2)->content;
-			count2++;
 		}
 		if (process->instruction.size[count] == T_DIR)
-		{
 			process->instruction.value[count] =
 				(short)process->instruction.value[count];
-		}
+		else if (process->instruction.size[count] == T_DIR * 2)
+			process->instruction.value[count] =
+				ft_revint32(process->instruction.value[count]);
 		prog_count += process->instruction.size[count++];
 	}
 }

@@ -6,34 +6,30 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/09 12:07:31 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/11 10:20:39 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/12 12:59:29 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
 
-void	decode_instruction(t_fetched *instruction, int prog_count)
+void	decode_instruction(t_process *process, t_byte *memory)
 {
 	int	count;
 
 	count = 0;
-	while (count < MAX_PARAMS && instruction->type[count] != UNSET)
+	while (count < MAX_PARAMS && process->instruction.type[count] != UNSET)
 	{
-		if (instruction->type[count] == IND_CODE)
+		if (process->instruction.type[count] == REG_CODE)
 		{
-			prog_count += instruction->value[count];
-			prog_count %= MEM_SIZE;
-			instruction->value[count] = prog_count;
-		}
-		else if (instruction->type[count] == REG_CODE)
-		{
-			if (instruction->value[count] < 1
-				|| instruction->value[count] > REG_NUMBER)
+			if (process->instruction.value[count] < 1
+				|| process->instruction.value[count] > REG_NUMBER)
 			{
-				reset_instruction(instruction);
+				reset_instruction(process, FALSE);
 				return ;
 			}
 		}
 		count++;
 	}
+	if (process->instruction.op_code == 1)
+		memory[process->prog_count].is_live = TRUE;
 }

@@ -6,7 +6,7 @@
 /*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/09 12:01:32 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/11 17:59:50 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/12 12:59:04 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,23 @@ t_op    g_op_tab[NBR_OP] =
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
 };
 
-void		reset_instruction(t_fetched *instruction)
+void		reset_instruction(t_process *process, t_bool carry)
 {
 	int	count;
+	int	op;
 
 	count = 0;
-	instruction->op_code = UNSET;
-	instruction->name = NULL;
-	instruction->pc_gap = UNSET;
+	op = process->instruction.op_code;
+	if (op == 2 || (op >= 4 && op <= 8) || op == 13 || op == 14)
+		process->carry = carry;
+	process->instruction.op_code = UNSET;
+	process->instruction.name = NULL;
+	process->instruction.pc_gap = UNSET;
 	while (count < MAX_PARAMS)
 	{
-		instruction->type[count] = UNSET;
-		instruction->size[count] = UNSET;
-		instruction->value[count] = UNSET;
+		process->instruction.type[count] = UNSET;
+		process->instruction.size[count] = UNSET;
+		process->instruction.value[count] = UNSET;
 		count++;
 	}
 }
@@ -70,7 +74,7 @@ t_op		*get_op_detail(int op_code)
 	return (NULL);
 }
 
-static void	move_prog_count(t_process *process, t_byte *memory, t_param *params)
+void		move_prog_count(t_process *process, t_byte *memory, t_param *params)
 {
 	int	prog_count;
 	int	count;
@@ -84,7 +88,7 @@ static void	move_prog_count(t_process *process, t_byte *memory, t_param *params)
 		prog_count = process->prog_count + process->instruction.pc_gap;
 	else
 		prog_count = process->prog_count + 1;
-	process->prog_count = prog_count % MEM_SIZE;
+	process->prog_count = get_adress(prog_count);
 	memory[process->prog_count].color = count + 1;
 	memory[process->prog_count].is_pc = TRUE;
 }
@@ -106,10 +110,10 @@ void		instruction_cycle(t_param *params, t_vm_data *data)
 			{
 				execute_instruction(&iter->process, params, data);
 				move_prog_count(process, data->memory, params);
-				reset_instruction(&process->instruction);
+				reset_instruction(process, TRUE);
 			}
 			fetch_instruction(process, data->memory);
-			decode_instruction(&process->instruction, process->prog_count);
+			decode_instruction(process, data->memory);
 		}
 		if (process->instruction.op_code == UNSET)
 			move_prog_count(process, data->memory, params);

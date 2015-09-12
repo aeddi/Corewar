@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:02:50 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/11 17:28:07 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/12 12:33:31 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,19 @@ int		count_list(t_plist *head, int player);
 void	launch_virtual_machine(t_param *params);
 void	exec_virtual_machine(t_param *params, t_vm_data *data);
 t_byte	*get_memory(t_byte *memory, int index);
+int		get_int_memory(t_byte *memory, int index);
+void	put_int_memory(t_byte *memory, int index, int put, int color);
+int		calc_indirect(int prog_count, int offset);
+int		get_adress(int adress);
 
 /*
 **	Instruction cycle functions
 */
 void	instruction_cycle(t_param *params, t_vm_data *data);
 t_op	*get_op_detail(int op_code);
-void	reset_instruction(t_fetched *instruction)	;
+void	reset_instruction(t_process *process, t_bool carry);
 void	fetch_instruction(t_process *process, t_byte *memory);
-void	decode_instruction(t_fetched *instruction, int prog_count);
+void	decode_instruction(t_process *process, t_byte *memory);
 void	execute_instruction(t_process *proc, t_param *params, t_vm_data *data);
 
 /*
@@ -82,6 +86,7 @@ void	print_memory(t_byte *memory, int verb_lvl, t_bool pause);
 void	print_players_intro(t_param *params);
 void	print_turn(t_param *params, t_vm_data *data);
 void	print_death(int count, t_param *params);
+void	print_live(int caller, int pid);
 void	print_operation(t_process *process);
 void	print_winner(t_param *params, t_vm_data *data);
 

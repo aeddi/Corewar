@@ -6,7 +6,7 @@
 /*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/07 15:32:28 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/10 00:13:22 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/12 15:04:14 by plastic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		count_list(t_plist *head, int player)
 	{
 		if (player)
 		{
-			if (player == *(int *)(&iter->process.reg[0]))
+			if (player == *(int *)&iter->process.reg[0])
 				count++;
 		}
 		else
