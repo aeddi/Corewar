@@ -54,6 +54,8 @@ static t_bool	check_params_type(char encoding, t_process *process, t_op *op)
 		}
 		if (ret == T_DIR && !op->has_idx)
 			ret *= 2;
+		else if (ret == T_IND)
+			ret = 2;
 		process->instruction.size[count] = ret;
 		process->instruction.pc_gap += ret;
 		count++;
