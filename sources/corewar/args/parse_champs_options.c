@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_champs_options.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/04 15:35:01 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/07 01:08:24 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 15:22:22 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	find_champ_number_dup(t_param *params, int index)
 	while (count < index - 1)
 	{
 		count2 = count + 1;
-		while(count2 < index)
+		while (count2 < index)
 		{
 			if (params->champs[count].number == params->champs[count2].number)
 				exit_error("Champions", "can't set same number twice",

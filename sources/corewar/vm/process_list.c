@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/07 15:32:28 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/12 15:04:14 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 15:24:43 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_list(t_plist *head)
 	t_plist *to_free;
 
 	iter = head;
-	while(iter)
+	while (iter)
 	{
 		to_free = iter;
 		iter = iter->next;
@@ -67,5 +67,5 @@ int		count_list(t_plist *head, int player)
 			count++;
 		iter = iter->next;
 	}
-	return count;
+	return (count);
 }

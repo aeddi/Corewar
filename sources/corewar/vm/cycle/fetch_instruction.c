@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fetch_instruction.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/09 12:06:54 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/12 14:52:19 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 14:42:11 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static t_bool	check_params_type(char encoding, t_process *process, t_op *op)
 	int	count;
 	int	ret;
 
-	count = 0;
+	count = -1;
 	process->instruction.type[0] = (encoding & (IND_CODE << 6)) >> 6;
 	process->instruction.type[1] = (encoding & (IND_CODE << 4)) >> 4;
 	process->instruction.type[2] = (encoding & (IND_CODE << 2)) >> 2;
 	process->instruction.pc_gap++;
-	while (count < op->arg_nbr)
+	while ((++count) < op->arg_nbr)
 	{
 		ret = is_compatible(process->instruction.type[count],
 							op->arg_type[count]);
@@ -58,7 +58,6 @@ static t_bool	check_params_type(char encoding, t_process *process, t_op *op)
 			ret = 2;
 		process->instruction.size[count] = ret;
 		process->instruction.pc_gap += ret;
-		count++;
 	}
 	return (TRUE);
 }

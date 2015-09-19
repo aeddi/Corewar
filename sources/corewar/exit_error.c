@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/04 11:41:58 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/07 10:49:02 by aeddi            ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 14:48:53 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ static void	print_usage(char *ex_path)
 	ft_putendl("   -dump N\tExit and dump VM memory after N cycles");
 	ft_putendl("   -s N\t\tDump VM memory content every N cycles");
 	ft_putendl("   -v N\t\tSet the verbosity level with N corresponding to:");
-    ft_putendl("   \t\t  0  Show only essentials");
-    ft_putendl("   \t\t  1  Show live signals");
-    ft_putendl("   \t\t  2  Show cycles count");
-    ft_putendl("   \t\t  3  Show operations (Params are NOT litteral ...)");
-    ft_putendl("   \t\t  4  Show deaths");
-    ft_putendl("   \t\t  5  Show colored memory");
-    ft_putendl("   \t\t  6  Show process PC");
-    ft_putendl("   \t\t  7  Show memory offset");
-    ft_putendl("   \t\t  8  Show memory ascii representation\n");
+	ft_putendl("   \t\t  0  Show only essentials");
+	ft_putendl("   \t\t  1  Show live signals");
+	ft_putendl("   \t\t  2  Show cycles count");
+	ft_putendl("   \t\t  3  Show operations (Params are NOT litteral ...)");
+	ft_putendl("   \t\t  4  Show deaths");
+	ft_putendl("   \t\t  5  Show colored memory");
+	ft_putendl("   \t\t  6  Show process PC");
+	ft_putendl("   \t\t  7  Show memory offset");
+	ft_putendl("   \t\t  8  Show memory ascii representation\n");
 	ft_putendl("--- Ncurses mode ------------------------------------------\n");
 	ft_putendl("   -g\t\tEnable Ncurses mode");
 	ft_putendl("   --stealth\tHide memory content\n");
 	ft_putendl("--- Both modes --------------------------------------------\n");
-	ft_putendl("   -a\t\tDisplay \"aff\" instruction output (default: disabled)");
+	ft_putendl("   -a\t\tDisplay 'aff' instruction output (default: disabled)");
 	ft_putendl("   -n N\t\tForce a number for the next champion\n");
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_memory.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/06 19:06:12 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/12 09:33:12 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 15:22:57 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,6 @@ void		print_memory(t_byte *memory, int verb_lvl, t_bool pause)
 	{
 		ft_putstr("  Press \033[1mENTER\033[0m key to continue ");
 		while (read(0, &buf, 1) && buf != '\n' & buf != EOF)
-			 ;
+			;
 	}
 }

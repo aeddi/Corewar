@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_sti.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/11 17:43:40 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/12 13:38:49 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 15:26:06 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	op_sti(t_process *process, t_param *params, t_vm_data *data)
 		second = process->instruction.value[2];
 	while (++count < MAX_PLAYERS)
 		if (*(int *)&process->reg[0] == params->champs[count].number)
-			break;
+			break ;
 	put_int_memory(data->memory,
 	calc_indirect(process->prog_count, (first + second)),
 	*(int *)&process->reg[process->instruction.value[0] - 1], count + 1);

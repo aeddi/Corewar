@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   instruction_cycle.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/09 12:01:32 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/12 12:59:04 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 15:25:26 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
 #include <stdlib.h>
 
-t_op    g_op_tab[NBR_OP] =
+t_op	g_op_tab[NBR_OP] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},

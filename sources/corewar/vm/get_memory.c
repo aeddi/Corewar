@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_memory.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/10 20:15:18 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/12 14:51:52 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 14:45:21 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		get_adress(int adress)
 {
 	adress %= MEM_SIZE;
 	if (adress < 0)
-		adress += MEM_SIZE;	
+		adress += MEM_SIZE;
 	return (adress);
 }
 
@@ -58,7 +58,7 @@ void	put_int_memory(t_byte *memory, int index, int put, int color)
 int		calc_indirect(int prog_count, int offset)
 {
 	int	ret;
-	
+
 	ret = prog_count + (offset % IDX_MOD);
 	ret = get_adress(ret);
 	return (ret);

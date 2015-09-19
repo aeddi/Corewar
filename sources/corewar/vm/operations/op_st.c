@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/11 17:42:44 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/12 13:27:01 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 15:25:54 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	op_st(t_process *process, t_param *params, t_vm_data *data)
 		while (++count < MAX_PLAYERS)
 		{
 			if (*(int *)&process->reg[0] == params->champs[count].number)
-				break;
+				break ;
 		}
 		indirect =
 			calc_indirect(process->prog_count, process->instruction.value[1]);

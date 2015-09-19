@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_virtual_machine.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/07 20:44:47 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/12 15:04:34 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 15:28:12 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		sum_and_wipe_array(int *array, int size, t_bool wipe)
 			array[count] = 0;
 		count++;
 	}
-	return acc;
+	return (acc);
 }
 
 static void		delete_dead_process(t_param *params, t_vm_data *data)
@@ -82,7 +82,7 @@ static t_bool	check_fight_state(t_param *params, t_vm_data *data)
 	return (TRUE);
 }
 
-void	exec_virtual_machine(t_param *params, t_vm_data *data)
+void			exec_virtual_machine(t_param *params, t_vm_data *data)
 {
 	while (42)
 	{
@@ -97,8 +97,6 @@ void	exec_virtual_machine(t_param *params, t_vm_data *data)
 				return ;
 			}
 		}
-//		else
-//			display_ncurses(params, data);
 		data->cycle_count++;
 		instruction_cycle(params, data);
 		if (!check_fight_state(params, data))

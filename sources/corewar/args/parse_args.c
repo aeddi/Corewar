@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/04 12:16:08 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/09 10:17:22 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 14:53:19 by gponsine         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include <corewar.h>
@@ -47,17 +48,17 @@ t_bool		is_number(char *value)
 		neg = TRUE;
 		count++;
 		if (value[count] == '\0')
-			return FALSE;
+			return (FALSE);
 	}
 	while (value[count])
 	{
 		if (value[count] < '0' || value[count] > '9')
-			return FALSE;
+			return (FALSE);
 		count++;
 	}
 	if ((count > 0 && !neg) || (count > 1 && neg))
-		return TRUE;
-	return FALSE;
+		return (TRUE);
+	return (FALSE);
 }
 
 int			get_options_value(char *flag, char *value, char *ex_path)
