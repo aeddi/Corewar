@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:02:50 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/12 12:33:31 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/19 15:42:42 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,4 @@ void	parse_files(t_param *params);
 void	byte_to_hex(char byte, char hex[3]);
 void	exit_error(char *error, char *detail, char *ex_path);
 
-#endif /* !COREWAR_H */
+#endif

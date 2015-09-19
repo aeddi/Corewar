@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   values.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plastic </var/spool/mail/plastic>          +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/05 22:25:26 by plastic           #+#    #+#             */
-/*   Updated: 2015/09/12 09:58:37 by plastic          ###   ########.fr       */
+/*   Created: 2015/09/19 15:45:35 by aeddi             #+#    #+#             */
+/*   Updated: 2015/09/19 15:46:24 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,4 @@
 # define VERB_LVL_PC			7
 # define VERB_LVL_ASCII			8
 
-#endif /* !VALUES_H */
+#endif

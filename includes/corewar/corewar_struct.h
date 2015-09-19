@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar_struct.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeddi <aeddi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/04 11:03:07 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/12 12:33:06 by plastic          ###   ########.fr       */
+/*   Updated: 2015/09/19 15:45:04 by gponsine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <values.h>
 
-typedef long long unsigned int t_llui;
+typedef long long unsigned int	t_llui;
 
 typedef enum		e_bool
 {
@@ -68,7 +68,7 @@ typedef struct		s_plist
 	t_process		process;
 	struct s_plist	*next;
 	struct s_plist	*prev;
-}					t_plist; 
+}					t_plist;
 
 typedef struct		s_vm_data
 {
@@ -114,4 +114,4 @@ typedef struct		s_param
 	int				champs_amount;
 }					t_param;
 
-#endif /* !COREWAR_STRUCT_H */
+#endif
