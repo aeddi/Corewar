@@ -6,7 +6,7 @@
 /*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/19 14:45:24 by gponsine         ###   ########.fr       */
+/*   Updated: 2016/04/20 17:01:02 by aeddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	load_champs(t_param *params, t_byte *memory)
 {
 	unsigned int	mem_c;
-	unsigned int	champ_c;
+	unsigned int	champ;
 	unsigned int	offset;
 	int				iter;
 
@@ -25,12 +25,12 @@ static void	load_champs(t_param *params, t_byte *memory)
 	while (iter < params->champs_amount)
 	{
 		mem_c = iter * offset;
-		champ_c = 0;
-		while (champ_c < params->champs[iter].header.prog_size)
+		champ = 0;
+		while (champ < params->champs[iter].header.prog_size)
 		{
-			memory[mem_c + champ_c].color = params->champs[iter].color;
-			memory[mem_c + champ_c].content = params->champs[iter].code[champ_c];
-			champ_c++;
+			memory[mem_c + champ].color = params->champs[iter].color;
+			memory[mem_c + champ].content = params->champs[iter].code[champ];
+			champ++;
 		}
 		iter++;
 	}
@@ -71,8 +71,8 @@ static void	init_vm_data(t_vm_data *data)
 	data->last_check = 0;
 	data->check_count = 0;
 	ft_bzero(data->memory, MEM_SIZE * sizeof(t_byte));
-	ft_bzero(data->nb_live_champs, MAX_PLAYERS * sizeof(int));
-	ft_bzero(data->nb_proc_champs, MAX_PLAYERS * sizeof(int));
+	ft_bzero(data->nb_live_champs, sizeof(int) * MAX_PLAYERS);
+	ft_bzero(data->nb_proc_champs, sizeof(int) * MAX_PLAYERS);
 }
 
 void		launch_virtual_machine(t_param *params)
@@ -82,14 +82,8 @@ void		launch_virtual_machine(t_param *params)
 	init_vm_data(&data);
 	load_champs(params, data.memory);
 	init_process_list(params, &data);
-	/* if (params->graphic) */
-	/* 	init_ncurses(params, &data); */
-	/* else */
-		print_players_intro(params);
+	print_players_intro(params);
 	exec_virtual_machine(params, &data);
-	/* if (params->graphic) */
-	/* 	display_winner(params, data); */
-	/* else */
-		print_winner(params, &data);
+	print_winner(params, &data);
 	free_list(data.head);
 }

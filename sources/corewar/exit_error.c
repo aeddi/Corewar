@@ -6,7 +6,7 @@
 /*   By: gponsine <gponsine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/19 14:41:37 by aeddi             #+#    #+#             */
-/*   Updated: 2015/09/19 14:48:53 by gponsine         ###   ########.fr       */
+/*   Updated: 2016/04/20 15:17:05 by aeddi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	print_usage(char *ex_path)
 {
 	ft_putstr("Usage: ");
 	ft_putstr(ex_path);
-	ft_putstr(" [-dump N -s N -v N | -g --stealth] [-a] ");
+	ft_putstr(" [-dump N -s N -v N ] [-a] ");
 	ft_putendl("<[-n N] champion1.cor> <...>\n");
-	ft_putendl("--- Text mode ---------------------------------------------\n");
+	ft_putendl("--- Core options ------------------------------------------\n");
 	ft_putendl("   -dump N\tExit and dump VM memory after N cycles");
 	ft_putendl("   -s N\t\tDump VM memory content every N cycles");
 	ft_putendl("   -v N\t\tSet the verbosity level with N corresponding to:");
@@ -35,10 +35,7 @@ static void	print_usage(char *ex_path)
 	ft_putendl("   \t\t  6  Show process PC");
 	ft_putendl("   \t\t  7  Show memory offset");
 	ft_putendl("   \t\t  8  Show memory ascii representation\n");
-	ft_putendl("--- Ncurses mode ------------------------------------------\n");
-	ft_putendl("   -g\t\tEnable Ncurses mode");
-	ft_putendl("   --stealth\tHide memory content\n");
-	ft_putendl("--- Both modes --------------------------------------------\n");
+	ft_putendl("--- Misc options ------------------------------------------\n");
 	ft_putendl("   -a\t\tDisplay 'aff' instruction output (default: disabled)");
 	ft_putendl("   -n N\t\tForce a number for the next champion\n");
 }
